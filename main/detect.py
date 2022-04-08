@@ -1,27 +1,27 @@
-import cv2
-import numpy as np
+import cv2 
+import numpy as np 
 import random
 import os
 from PIL import Image
 import time
 import telegram
 
-chat_id = '1036457320'
-bot = telegram.Bot(token='5267732565:AAGFLzXxTc5FE7fgpVID9B-oY6q3B-YgWZo')
+chat_id = '1036457320' 
+bot = telegram.Bot(token='5267732565:AAGFLzXxTc5FE7fgpVID9B-oY6q3B-YgWZo') 
     
 
 
-net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
-net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg") 
+net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA) 
+net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA) 
 
-distance_thres = 50
+distance_thres = 50 
 
-cap = cv2.VideoCapture('data/humans.mp4')
+cap = cv2.VideoCapture('data/humans.mp4')  
 
-class_names = [c.strip() for c in open('data/coco.names').readlines()]
+class_names = [c.strip() for c in open('data/coco.names').readlines()] 
 
-def dist(pt1,pt2):
+def dist(pt1,pt2):     
     try:
         return ((pt1[0]-pt2[0])**2 + (pt1[1]-pt2[1])**2)**0.5
     except:
@@ -111,6 +111,6 @@ while ret:
     if cv2.waitKey(1) == 27:
         break
 
-    
+bot.send_video(chat_id, video=open(r'output.avi', 'rb'))    
 cap.release()
 cv2.destroyAllWindows()
