@@ -6,8 +6,8 @@ from PIL import Image
 import time
 import telegram
 
-chat_id = '1036457320' 
-bot = telegram.Bot(token='5267732565:AAGFLzXxTc5FE7fgpVID9B-oY6q3B-YgWZo') 
+chat_id = 'YOUR CHAT ID OF TELEGRAM' 
+bot = telegram.Bot(token='YOUR OWN BOTS TELEGRAM BOT TOKEN') 
     
 
 
